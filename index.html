@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Foreman · Line 3</title>
+  <meta name="description" content="Foreman — a shop-floor inspection agent running on AMD Instinct. PatchCore finds the defect, Gemma 4 explains it, the manual tells you how to fix it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./static/app.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2316140f'/%3E%3Cpath d='M8 7h16v4H13v4h9v4h-9v7H8z' fill='%23ff5a1f'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">
+      <span class="wordmark">Foreman</span>
+      <span class="brand-sub">Shop-floor inspection agent</span>
+    </div>
+    <div class="asset">
+      <span class="asset-line">Line 3</span>
+      <span class="asset-meta">FM-400 cold former · M10 hex nut · CAM-3</span>
+    </div>
+    <div class="mast-status">
+      <span class="lamp" id="lineLamp" data-state="idle"></span>
+      <span class="mono" id="lineStatus">Idle</span>
+      <span class="divider"></span>
+      <span class="mode-badge" id="modeBadge">—</span>
+      <span class="divider"></span>
+      <span class="mono clock" id="clock">--:--:--</span>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <main class="floor">
+    <!-- ───────────── Left: camera + filmstrip ───────────── -->
+    <section class="col col-camera" aria-label="Camera inspection">
+      <div class="section-head">
+        <h2 class="label">01 · Vision</h2>
+        <span class="mono muted" id="detMeta">PatchCore</span>
+      </div>
+
+      <figure class="viewer" id="viewer" data-flag="none">
+        <div class="viewer-stage" id="viewerStage">
+          <img id="viewImage" alt="Current part from camera CAM-3" />
+          <img id="viewHeat" class="heat" alt="Anomaly heatmap overlay" />
+          <div class="bbox" id="bbox" hidden></div>
+          <div class="reveal-handle" id="revealHandle" aria-hidden="true"><span></span></div>
+          <div class="viewer-empty" id="viewerEmpty">
+            <span class="big">Waiting for parts</span>
+            <span class="mono muted">Start the line or drop an image here</span>
+          </div>
+        </div>
+        <input type="range" min="0" max="100" value="50" id="reveal" class="reveal" aria-label="Reveal heatmap" />
+        <figcaption class="viewer-caption">
+          <div>
+            <span class="mono muted" id="partId">—</span>
+            <span class="verdict" id="partVerdict">—</span>
+          </div>
+          <div class="score">
+            <span class="mono muted">anomaly</span>
+            <span class="score-num mono" id="partScore">—</span>
+            <span class="mono muted">/ <span id="partThresh">—</span></span>
+          </div>
+        </figcaption>
+        <div class="score-rule" aria-hidden="true"><span id="scoreFill"></span><i id="scoreMark"></i></div>
+        <p class="region mono muted" id="partRegion">&nbsp;</p>
+      </figure>
+
+      <div class="section-head tight">
+        <h3 class="label">Recent parts</h3>
+        <span class="mono muted"><span id="cInspected">0</span> inspected · <span id="cFlagged">0</span> flagged</span>
+      </div>
+      <ol class="filmstrip" id="filmstrip"></ol>
+
+      <label class="dropzone" id="dropzone">
+        <input type="file" accept="image/*" id="uploadInput" hidden />
+        <span class="mono">Inspect your own image</span>
+        <span class="muted">Drop or click — runs the full pipeline</span>
+      </label>
+    </section>
+
+    <!-- ───────────── Middle: sensors + controls ───────────── -->
+    <section class="col col-sensors" aria-label="Press sensors">
+      <div class="section-head">
+        <h2 class="label">02 · Press sensors</h2>
+        <span class="chip" id="sensorStatus" data-state="ok">Normal</span>
+      </div>
+      <ul class="sensors" id="sensors"></ul>
+      <p class="footnote">Sensor feed is simulated from the FM-400 commissioning spec; camera images are real (MVTec AD). Bands: ±3σ warn, ±5σ alarm.</p>
+
+      <div class="section-head">
+        <h2 class="label">Line control</h2>
+        <span class="mono muted" id="faultState">No fault injected</span>
+      </div>
+      <div class="controls">
+        <div class="btn-row">
+          <button class="btn btn-ink" id="btnRun">Start line</button>
+          <button class="btn" id="btnStep">Step</button>
+        </div>
+        <p class="mono muted small">Inject a machine fault — sensors drift first, then the camera starts seeing defects:</p>
+        <div class="faults" id="faults"></div>
+        <button class="btn btn-ghost" id="btnClear">Clear fault</button>
+      </div>
+
+      <div class="section-head">
+        <h2 class="label">Ask the manual</h2>
+        <span class="mono muted" id="manualMeta">—</span>
+      </div>
+      <form class="ask" id="askForm">
+        <input type="text" id="askInput" placeholder="e.g. What torque for the punch holder bolts?" autocomplete="off" />
+        <button class="btn btn-ink" type="submit">Ask</button>
+      </form>
+      <div class="answer" id="answer" hidden></div>
+    </section>
+
+    <!-- ───────────── Right: the agent's ticket ───────────── -->
+    <section class="col col-agent" aria-label="Agent diagnosis">
+      <div class="section-head">
+        <h2 class="label">03 · Diagnosis &amp; work order</h2>
+        <span class="mono muted" id="incCount">0 incidents</span>
+      </div>
+
+      <article class="ticket" id="ticket" data-state="empty">
+        <div class="ticket-empty">
+          <span class="big">All clear</span>
+          <p class="muted">When the camera or the sensors flag something, Foreman reads the photo, the heatmap, the sensor trends and the manual — then drafts a work order for a supervisor to approve.</p>
+          <ol class="pipeline-legend mono">
+            <li><b>Detect</b> PatchCore on PyTorch</li>
+            <li><b>Fuse</b> camera × sensors</li>
+            <li><b>Retrieve</b> manual sections</li>
+            <li><b>Reason</b> Gemma 4 vision</li>
+            <li><b>Approve</b> human in the loop</li>
+          </ol>
+        </div>
+        <div class="ticket-body" id="ticketBody"></div>
+      </article>
+
+      <div class="section-head tight">
+        <h3 class="label">Incident log</h3>
+      </div>
+      <ol class="log" id="log"></ol>
+    </section>
+  </main>
+
+  <!-- ───────────── AMD rail ───────────── -->
+  <footer class="rail" aria-label="Compute telemetry">
+    <div class="rail-title">
+      <span class="label">Compute</span>
+      <span class="rail-gpu" id="gpuName">Detecting hardware…</span>
+      <span class="mono muted small" id="gpuSource">—</span>
+    </div>
+    <dl class="meters">
+      <div class="meter"><dt id="lUtil">GPU util</dt><dd><span class="mono" id="mUtil">—</span><i class="bar"><b id="bUtil"></b></i></dd></div>
+      <div class="meter"><dt id="lVram">VRAM</dt><dd><span class="mono" id="mVram">—</span><i class="bar"><b id="bVram"></b></i></dd></div>
+      <div class="meter"><dt>Power</dt><dd><span class="mono" id="mPower">—</span></dd></div>
+      <div class="meter"><dt>Temp</dt><dd><span class="mono" id="mTemp">—</span></dd></div>
+      <div class="meter"><dt>Gemma decode</dt><dd><span class="mono" id="mTps">—</span></dd></div>
+      <div class="meter"><dt>KV cache</dt><dd><span class="mono" id="mKv">—</span></dd></div>
+      <div class="meter"><dt>PatchCore</dt><dd><span class="mono" id="mDet">—</span></dd></div>
+      <div class="meter"><dt>Last diagnosis</dt><dd><span class="mono" id="mDiag">—</span></dd></div>
+    </dl>
+  </footer>
+
+  <template id="tplFault">
+    <button class="fault"><span class="fault-name"></span><span class="fault-sig mono"></span></button>
+  </template>
+
+  <script src="./static/replay.js"></script>
+  <script src="./static/app.js" type="module"></script>
+</body>
+</html>
