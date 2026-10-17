@@ -7,3 +7,8 @@ data/mvtec/
 data/models/*.pt
 data/*.db
 data/*.db-journal
+
+# replay recording + static site build output
+replay/
+site/
+replay_test/

@@ -127,6 +127,7 @@ img { display: block; max-width: 100%; }
 
 .banner { padding: var(--s-2) var(--s-6); font: 500 var(--t-12)/1.4 var(--font-mono); background: var(--warn); color: #16140f; }
 .banner[data-level="error"] { background: var(--alarm); color: #fff; }
+.banner[data-level="info"] { background: #16140f; color: #efebe2; }
 
 /* ───────────────────────── layout ───────────────────────── */
 .floor {

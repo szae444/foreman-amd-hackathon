@@ -411,6 +411,7 @@ class Foreman:
             "llm": self.reasoner.health(),
             "manual": {"title": self.manual.title, "sections": len(self.manual.sections)},
             "category": settings.category,
+            "notice": settings.notice,
         }
 
 

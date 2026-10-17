@@ -5,6 +5,8 @@ PatchCore finds the defect, Gemma 4 explains why it happened, the machine manual
 
 > AMD Developer Hackathon: ACT III · Track: **Intelligent Industry**: help factories spot problems earlier and operate better.
 
+**Try it:** [szae444.github.io/foreman-amd-hackathon](https://szae444.github.io/foreman-amd-hackathon/) is the real UI replaying a recorded live run (PatchCore + Gemma 4 E2B on the Ryzen, CPU only). Your clicks step through the recording; nothing runs in the browser, and the long Gemma wait is fast-forwarded with the real time shown. It is recorded by `scripts/record_replay.py` and built by `scripts/build_replay_site.py`. To run it live, see [On an AMD Ryzen CPU](#on-an-amd-ryzen-cpu-with-the-real-gemma-4-the-demo).
+
 ---
 
 ## The problem

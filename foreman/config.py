@@ -43,6 +43,8 @@ class Settings:
     tick_s: float = float(os.getenv("FOREMAN_TICK_S", "4.0"))
     defect_rate: float = float(os.getenv("FOREMAN_DEFECT_RATE", "0.25"))
     autostart: bool = _bool("FOREMAN_AUTOSTART", False)
+    # One line shown on top of the UI, e.g. where a hosted copy runs. Empty = none.
+    notice: str = os.getenv("FOREMAN_NOTICE", "")
 
     # --- Telemetry ---
     vllm_metrics_url: str = os.getenv("FOREMAN_VLLM_METRICS_URL", "")  # default: derived from llm_base_url

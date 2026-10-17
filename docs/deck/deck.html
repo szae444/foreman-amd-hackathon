@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Foreman deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #efebe2; --card: #f8f5ee; --ink: #16140f; --ink-2: #4b473e; --ink-3: #8a8475; --rule: #d6d0c2;
+    --accent: #ff5a1f; --ok: #2f6b45;
+    --display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+    --sans: "IBM Plex Sans", Arial, sans-serif;
+    --mono: "IBM Plex Mono", "Courier New", monospace;
+  }
+  @page { size: 1920px 1080px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #888; }
+  body { font-family: var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .slide { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); page-break-after: always; break-after: page;
+    background-image: linear-gradient(rgba(22,20,15,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(22,20,15,.045) 1px, transparent 1px);
+    background-size: 40px 40px; }
+  .abs { position: absolute; }
+  /* furniture */
+  .folio { position: absolute; left: 120px; top: 64px; font: 600 20px/1 var(--mono); letter-spacing: 3px; text-transform: uppercase; color: var(--ink-2); }
+  .folio b { color: var(--accent); font-weight: 600; }
+  .foot { position: absolute; left: 120px; right: 120px; bottom: 56px; display: flex; justify-content: space-between; font: 500 18px/1 var(--mono); letter-spacing: 1.5px; color: var(--ink-3); border-top: 2px solid var(--ink); padding-top: 18px; }
+  .kicker { font: 600 22px/1 var(--mono); letter-spacing: 4px; text-transform: uppercase; color: var(--ink-2); }
+  h1 { font: 900 132px/0.88 var(--display); text-transform: uppercase; letter-spacing: -1px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lede { font: 400 30px/1.4 var(--sans); color: var(--ink-2); }
+  /* the inspection tag: the element that carries through the film and the deck */
+  .tag { position: absolute; border: 4px solid var(--accent); pointer-events: none; }
+  .tag i { position: absolute; width: 14px; height: 14px; background: var(--accent); }
+  .tag i:nth-child(1) { left: -9px; top: -9px; } .tag i:nth-child(2) { right: -9px; top: -9px; }
+  .tag i:nth-child(3) { left: -9px; bottom: -9px; } .tag i:nth-child(4) { right: -9px; bottom: -9px; }
+  .tag span { position: absolute; left: -4px; bottom: 100%; margin-bottom: 4px; background: var(--accent); color: var(--ink); font: 600 18px/34px var(--mono); letter-spacing: 2px; text-transform: uppercase; padding: 0 12px; white-space: nowrap; }
+  .shot { position: absolute; display: block; background: var(--card); box-shadow: 0 1px 0 rgba(22,20,15,.08), 0 24px 60px -18px rgba(22,20,15,.35); }
+  .shot.edge { outline: 2px solid var(--ink); }
+  .num { font: 900 150px/0.86 var(--display); letter-spacing: -1px; white-space: nowrap; }
+  .lab { font: 500 22px/1.4 var(--mono); color: var(--ink-2); margin-top: 16px; }
+  .col h3 { font: 900 64px/0.95 var(--display); text-transform: uppercase; margin: 22px 0 18px; }
+  .col p { font: 400 27px/1.45 var(--sans); color: var(--ink-2); }
+  .col .n { font: 600 22px/1 var(--mono); letter-spacing: 3px; color: var(--accent); }
+  .node { position: absolute; top: 470px; width: 262px; height: 300px; background: var(--card); border: 2px solid var(--ink); padding: 24px 22px; }
+  .node.dark { background: var(--ink); color: var(--paper); }
+  .node .n { font: 600 20px/1 var(--mono); letter-spacing: 2px; color: var(--ink-3); }
+  .node.dark .n { color: var(--accent); }
+  .node .t { font: 900 60px/1 var(--display); text-transform: uppercase; margin: 16px 0 14px; }
+  .node .d { font: 400 21px/1.42 var(--sans); color: var(--ink-2); }
+  .node.dark .d { color: #cfc9bb; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { text-align: left; padding: 17px 0; border-bottom: 2px solid var(--rule); font: 400 26px/1.25 var(--sans); }
+  th { font: 600 19px/1 var(--mono); letter-spacing: 2px; text-transform: uppercase; color: var(--ink-3); border-bottom: 2px solid var(--ink); }
+  td.v { font: 800 38px/1 var(--display); white-space: nowrap; }
+  td.v.hi { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- 01 · cover -->
+<section class="slide" id="s1">
+  <div class="kicker abs" style="left:120px;top:120px">AMD Developer Hackathon · ACT III · Intelligent Industry</div>
+  <h1 class="abs" style="left:112px;top:205px;font-size:300px;letter-spacing:-3px">Foreman</h1>
+  <div class="abs" style="left:120px;top:490px;font:900 84px/1 var(--display);text-transform:uppercase">Find it. Explain it. <span style="color:var(--accent)">Fix it.</span></div>
+  <p class="lede abs" style="left:120px;top:610px;width:820px">A shop-floor inspection agent. PatchCore finds the defect, Gemma&nbsp;4 explains why, the machine manual says how to fix it, and a supervisor signs off.</p>
+  <div class="abs" style="left:120px;top:830px;display:flex;gap:0;border:2px solid var(--ink)">
+    <div style="background:var(--ink);color:var(--paper);padding:20px 26px;font:900 40px/1 var(--display);text-transform:uppercase">One AMD Ryzen CPU</div>
+    <div style="padding:20px 26px;font:900 40px/1 var(--display);text-transform:uppercase">No GPU · No cloud</div>
+  </div>
+  <div class="abs" style="left:120px;top:950px;font:500 22px/1 var(--mono);letter-spacing:1px;color:var(--ink-2)">github.com/szae444/foreman-amd-hackathon</div>
+  <!-- layered real output: the ticket behind, the flagged part in front -->
+  <img class="shot edge" src="img/ticket_head.jpg" style="left:1180px;top:180px;width:620px" />
+  <img class="shot edge" src="img/heat.jpg" style="left:1010px;top:560px;width:420px" />
+  <div class="tag" style="left:1010px;top:560px;width:420px;height:419px"><i></i><i></i><i></i><i></i><span>Flagged · Discoloration</span></div>
+</section>
+
+<!-- 02 · problem -->
+<section class="slide" id="s2">
+  <div class="folio">Foreman · <b>02</b> · The problem</div>
+  <h1 class="abs" style="left:116px;top:150px">A worn die<br>costs you <em>twice.</em></h1>
+  <div class="abs" style="left:120px;top:600px;right:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:72px">
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:26px"><div class="n">01</div><h3>Scrap</h3><p>Bad parts keep coming off the line until someone notices.</p></div>
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:26px"><div class="n">02</div><h3>Downtime</h3><p>A technician still has to work out <b>why</b>. The answer is in a thick manual and in senior technicians' heads.</p></div>
+    <div class="col" style="border-top:6px solid var(--accent);padding-top:26px"><div class="n">03</div><h3>Blind spots</h3><p>Vision systems say "bad part", not why. And cloud AI can't see a camera feed that has to stay in the plant.</p></div>
+  </div>
+  <div class="foot"><span>Symptom → cause → fix lives in a manual and in experienced people</span><span>AMD Developer Hackathon · ACT III</span></div>
+</section>
+
+<!-- 03 · product -->
+<section class="slide" id="s3">
+  <div class="folio">Foreman · <b>03</b> · The product</div>
+  <h1 class="abs" style="left:116px;top:130px;font-size:104px">From camera image<br>to approved work order.</h1>
+  <img class="shot edge" src="img/ui.jpg" style="left:120px;top:360px;width:1080px" />
+  <div class="tag" style="left:783px;top:469px;width:406px;height:207px"><i></i><i></i><i></i><i></i><span>Gemma 4 · diagnosis</span></div>
+  <div class="tag" style="left:131px;top:469px;width:338px;height:338px"><i></i><i></i><i></i><i></i><span>PatchCore · heatmap</span></div>
+  <div class="abs" style="left:1290px;top:370px;width:510px">
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:22px"><div class="n">Real output</div>
+      <p style="margin-top:16px">This is the live app during the lubricant fault, with Gemma&nbsp;4 E2B running CPU-only on the AMD Ryzen.</p>
+      <p style="margin-top:22px">The camera flags a discoloured nut, the heatmap boxes the stain, and Gemma names a <b>lubrication system fault</b>.</p>
+      <p style="margin-top:22px">Foreman's own check confirms camera and sensors agree: manual §5.3 → §4.3.</p></div>
+  </div>
+  <div class="foot"><span>Camera images: real (MVTec AD) · press sensors: simulated</span><span>AMD Developer Hackathon · ACT III</span></div>
+</section>
+
+<!-- 04 · pipeline -->
+<section class="slide" id="s4">
+  <div class="folio">Foreman · <b>04</b> · How it works</div>
+  <h1 class="abs" style="left:116px;top:150px">Six steps.<br>Two are <em>neural.</em></h1>
+  <div class="node dark" style="left:120px"><div class="n">01</div><div class="t">Detect</div><div class="d">PatchCore, trained on good parts only, scores each part and draws the heatmap.</div></div>
+  <div class="node" style="left:402px"><div class="n">02</div><div class="t">Fuse</div><div class="d">Press sensors against the machine's baseline. Statistics, not an LLM.</div></div>
+  <div class="node" style="left:684px"><div class="n">03</div><div class="t">Retrieve</div><div class="d">Manual sections that match the signature, plus the repairs they point to.</div></div>
+  <div class="node dark" style="left:966px"><div class="n">04</div><div class="t">Reason</div><div class="d">Gemma 4 vision reads photo, heatmap, sensors and manual. Structured diagnosis.</div></div>
+  <div class="node" style="left:1248px"><div class="n">05</div><div class="t">Verify</div><div class="d">Every manual citation is checked against what the model was shown.</div></div>
+  <div class="node" style="left:1530px"><div class="n">06</div><div class="t">Approve</div><div class="d">A supervisor approves or rejects. The repair runs, the sensors recover.</div></div>
+  <div class="tag" style="left:956px;top:460px;width:282px;height:320px"><i></i><i></i><i></i><i></i><span>Gemma 4 E2B · llama.cpp</span></div>
+  <div class="abs" style="left:120px;top:830px;font:500 24px/1.4 var(--mono);color:var(--ink-2)"><span style="display:inline-block;width:18px;height:18px;background:var(--ink);vertical-align:-2px;margin-right:12px"></span>Dark steps run on the AMD Ryzen CPU: PatchCore on PyTorch, Gemma 4 on llama.cpp.</div>
+  <div class="foot"><span>Statistics for the sensors · retrieval you can check · a human always approves</span><span>AMD Developer Hackathon · ACT III</span></div>
+</section>
+
+<!-- 05 · early warning -->
+<section class="slide" id="s5">
+  <div class="folio">Foreman · <b>05</b> · The moment that matters</div>
+  <h1 class="abs" style="left:116px;top:130px;font-size:104px">Sensors warn first.<br>The camera <em>confirms.</em></h1>
+  <div class="abs" style="left:120px;top:400px;right:120px;display:grid;grid-template-columns:repeat(4,1fr);gap:44px">
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:22px"><div class="n">1 · Fault starts</div><p style="margin-top:14px">Lubricant degrades. The parts still look fine.</p></div>
+    <div class="col" style="border-top:6px solid var(--accent);padding-top:22px"><div class="n">2 · Early warning</div><p style="margin-top:14px">Die temperature up, lube pressure down. Foreman opens an incident from the sensors alone.</p></div>
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:22px"><div class="n">3 · Escalated</div><p style="margin-top:14px">The camera sees discoloration. The <b>same</b> incident is re-diagnosed with the photo.</p></div>
+    <div class="col" style="border-top:6px solid var(--ok);padding-top:22px"><div class="n" style="color:var(--ok)">4 · Approved</div><p style="margin-top:14px">Filter change per the manual. The sensor traces return to baseline.</p></div>
+  </div>
+  <img class="shot edge" src="img/sensors.jpg" style="left:542px;top:655px;width:300px" />
+  <div class="tag" style="left:536px;top:788px;width:312px;height:134px"><i></i><i></i><i></i><i></i><span>Die temp ↑ · lube ↓</span></div>
+  <img class="shot edge" src="img/heat.jpg" style="left:986px;top:690px;width:300px" />
+  <img class="shot edge" src="img/stamp.jpg" style="left:1430px;top:690px;width:370px" />
+  <div class="abs" style="left:120px;top:700px;width:340px;font:900 52px/1.02 var(--display);text-transform:uppercase">One incident.<br>One work order.<br><span style="color:var(--ink-3)">No alert storm.</span></div>
+</section>
+
+<!-- 06 · why AMD -->
+<section class="slide" id="s6">
+  <div class="folio">Foreman · <b>06</b> · Why AMD</div>
+  <h1 class="abs" style="left:116px;top:130px;font-size:120px">One Ryzen CPU. Two models.<br><em>No GPU. No cloud.</em></h1>
+  <div class="abs" style="left:0;top:395px;width:1920px;height:160px;overflow:hidden;background:#16140f">
+    <img src="img/rail.jpg" style="position:absolute;left:100px;top:-2px;width:3072px;height:auto" />
+  </div>
+  <div class="tag" style="left:122px;top:400px;width:540px;height:150px"><i></i><i></i><i></i><i></i><span>The machine · live in the UI</span></div>
+  <div class="abs" style="left:120px;top:620px;right:120px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px">
+    <div style="border-left:6px solid var(--accent);padding-left:26px"><div class="num" style="font-size:120px">0</div><div class="lab">GPUs used. The laptop's NVIDIA card is switched off for the run.</div></div>
+    <div style="border-left:6px solid var(--ink);padding-left:26px"><div class="num" style="font-size:120px">184 ms</div><div class="lab">PatchCore per part on the Ryzen 7 7435HS</div></div>
+    <div style="border-left:6px solid var(--ink);padding-left:26px"><div class="num" style="font-size:120px">12 tok/s</div><div class="lab">Gemma 4 E2B decode on the same 8 cores</div></div>
+    <div style="border-left:6px solid var(--ink);padding-left:26px"><div class="num" style="font-size:120px">12/12</div><div class="lab">live eval: right defect, agreement and § cited</div></div>
+  </div>
+  <div class="foot"><span>Self-hosted: camera images never leave the plant · ROCm + vLLM build for Instinct MI300X included (built, not yet run)</span><span>Ryzen 7 7435HS</span></div>
+</section>
+
+<!-- 07 · evidence -->
+<section class="slide" id="s7">
+  <div class="folio">Foreman · <b>07</b> · Evidence</div>
+  <h1 class="abs" style="left:116px;top:150px;font-size:112px">Measured,<br><em>not claimed.</em></h1>
+  <div class="abs" style="left:120px;top:470px;width:520px">
+    <div class="num" style="font-size:210px">0.996</div>
+    <div class="lab" style="font-size:24px">image AUROC · MVTec AD metal_nut<br>held-out test split</div>
+  </div>
+  <div class="tag" style="left:104px;top:450px;width:500px;height:215px"><i></i><i></i><i></i><i></i><span>Detector</span></div>
+  <div class="abs" style="left:820px;top:150px;width:980px">
+    <table>
+      <tr><th>Measure</th><th style="width:260px">AMD Ryzen (CPU)</th><th style="width:200px">RTX 4050 (dev)</th></tr>
+      <tr><td>False alarms on good parts</td><td class="v hi">0 %</td><td class="v">same model</td></tr>
+      <tr><td>Recall: bent / color / flip / scratch</td><td class="v">96/96/100/78 %</td><td class="v">same model</td></tr>
+      <tr><td>PatchCore latency per part</td><td class="v">184 ms</td><td class="v">—</td></tr>
+      <tr><td>Gemma 4 E2B full diagnosis (median)</td><td class="v">2.8 min</td><td class="v">≈ 18 s</td></tr>
+      <tr><td>Live eval: right defect + § cited (4 faults)</td><td class="v hi">12 / 12</td><td class="v">12 / 12</td></tr>
+      <tr><td>Repair matches the manual</td><td class="v">9 / 12</td><td class="v">—</td></tr>
+      <tr><td>Automated tests</td><td class="v">34</td><td class="v">—</td></tr>
+    </table>
+    <p style="margin-top:28px;font:400 22px/1.45 var(--sans);color:var(--ink-2)">The 3 repairs that missed were flagged by Foreman's own checks. Small sample: 3 images per fault.</p>
+  </div>
+  <div class="foot"><span>Honest scope: camera images real · press sensors simulated · FM-400 manual fictional</span><span>AMD Developer Hackathon · ACT III</span></div>
+</section>
+
+<!-- 08 · next -->
+<section class="slide" id="s8">
+  <div class="folio">Foreman · <b>08</b> · Next</div>
+  <h1 class="abs" style="left:116px;top:150px;font-size:104px">From one demo line<br>to a real plant floor.</h1>
+  <div class="abs" style="left:120px;top:440px;right:120px;display:grid;grid-template-columns:repeat(3,1fr);gap:72px">
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:22px"><div class="n">Your manuals</div><p style="margin-top:14px">Any manual in the section format. Cross-references are followed, citations stay checked.</p></div>
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:22px"><div class="n">Your sensors</div><p style="margin-top:14px">Swap the simulator for the plant's historian or an OPC UA feed.</p></div>
+    <div class="col" style="border-top:6px solid var(--ink);padding-top:22px"><div class="n">Your CMMS</div><p style="margin-top:14px">Approved work orders go straight into the maintenance system, with the evidence attached.</p></div>
+  </div>
+  <div class="abs" style="left:120px;top:740px;font:900 96px/1 var(--display);text-transform:uppercase">Find it. Explain it. <span style="color:var(--accent)">Fix it.</span></div>
+  <div class="foot"><span style="color:var(--ink);font-weight:600">github.com/szae444/foreman-amd-hackathon</span><span>Roadmap items, not built yet</span></div>
+</section>
+
+</body>
+</html>

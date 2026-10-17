@@ -427,7 +427,9 @@ function renderHealth(state) {
   if (!det.ready) msgs.push(det.error || "Detector not loaded.");
   if (llm.mode === "mock") msgs.push("MOCK MODE — diagnoses are placeholders. Set FOREMAN_LLM_MODE=live and point FOREMAN_LLM_BASE_URL at vLLM before recording a demo.");
   else if (!llm.ok) msgs.push(`Gemma endpoint unreachable: ${llm.error || ""}`);
-  if (msgs.length) banner(msgs.join("  ·  "), det.ready ? "warn" : "error"); else $("banner").hidden = true;
+  if (msgs.length) banner(msgs.join("  ·  "), det.ready ? "warn" : "error");
+  else if (state.notice) banner(state.notice, "info");
+  else $("banner").hidden = true;
 }
 
 function banner(text, level = "warn") {
