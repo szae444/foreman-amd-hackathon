@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Foreman cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet">
+<style>
+  /* 16:9 cover for the lablab submission. Open at exactly 1600x900 and capture. */
+  html, body { margin: 0; background: #16140f; }
+  .cover { position: relative; width: 1600px; height: 900px; overflow: hidden; background: #16140f; color: #ede8dc;
+    background-image: linear-gradient(rgba(237,232,220,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(237,232,220,.04) 1px, transparent 1px);
+    background-size: 32px 32px; font-family: "IBM Plex Sans", sans-serif; }
+  .bar { position: absolute; inset: 0 0 auto 0; height: 12px; background: #ff5a1f; }
+  .eyebrow { position: absolute; left: 96px; top: 88px; font: 600 20px/1 "IBM Plex Mono", monospace; letter-spacing: .2em; text-transform: uppercase; color: #ff6a33; }
+  h1 { position: absolute; left: 88px; top: 150px; margin: 0; font: 900 250px/.82 "Big Shoulders Display", sans-serif; text-transform: uppercase; letter-spacing: -.01em; }
+  .tag { position: absolute; left: 96px; top: 380px; font: 800 72px/1 "Big Shoulders Display", sans-serif; text-transform: uppercase; color: #ff6a33; }
+  .sub { position: absolute; left: 96px; top: 480px; width: 640px; font: 400 24px/1.5 "IBM Plex Sans", sans-serif; color: #a9a294; }
+  .shot { position: absolute; right: 64px; top: 470px; width: 640px; border: 1px solid #34312a; box-shadow: 0 30px 80px -30px #000; transform: rotate(-1.5deg); }
+  .shot img { display: block; width: 100%; }
+  .foot { position: absolute; left: 96px; bottom: 72px; display: flex; gap: 32px; font: 500 20px/1 "IBM Plex Mono", monospace; color: #a9a294; text-transform: uppercase; letter-spacing: .08em; }
+  .foot b { color: #ede8dc; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="cover" id="cover">
+  <div class="bar"></div>
+  <div class="eyebrow">AMD Developer Hackathon · Act III · Intelligent Industry</div>
+  <h1>Foreman</h1>
+  <div class="tag">Find it. Explain it. Fix it.</div>
+  <p class="sub">PatchCore finds the defect, Gemma 4 explains why, the manual says how to fix it, and a supervisor approves the work order.</p>
+  <div class="shot"><img src="screenshot-vision-sensors.png" alt="Foreman UI with a defect heatmap and sensor alarm"></div>
+  <div class="foot"><span><b>AMD Instinct MI300X</b></span><span>ROCm</span><span>vLLM</span><span>Gemma 4</span><span>PatchCore</span></div>
+</div>
+</body>
+</html>

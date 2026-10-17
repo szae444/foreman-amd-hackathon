@@ -1,0 +1,87 @@
+{
+  "model": "google/gemma-4-E2B-it",
+  "totals": {
+    "cases": 3,
+    "defect": 3,
+    "agree": 3,
+    "cites": 3,
+    "action": 3,
+    "errors": 0,
+    "action_flagged": 0
+  },
+  "rows": [
+    {
+      "fault": "transfer_misalign",
+      "image": "010.png",
+      "seconds": 110.8,
+      "tokens": 969,
+      "defect_type": "bent",
+      "cause": "transfer finger misalignment",
+      "confidence": 0.7,
+      "severity": "critical",
+      "action": "stop_line",
+      "refs": [
+        "§4.2 p.16",
+        "§5.2 p.28"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "bent",
+        "sensors_suggest": "bent",
+        "via": "§5.2 p.28 → §4.2 p.16"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "transfer_misalign",
+      "image": "004.png",
+      "seconds": 339.6,
+      "tokens": 1186,
+      "defect_type": "bent",
+      "cause": "uncertain",
+      "confidence": 0.5,
+      "severity": "critical",
+      "action": "stop_line",
+      "refs": [
+        "§4.2 p.16",
+        "§5.2 p.28",
+        "§1 p.3"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "bent",
+        "sensors_suggest": "bent",
+        "via": "§5.2 p.28 → §4.2 p.16"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "transfer_misalign",
+      "image": "014.png",
+      "seconds": 117.1,
+      "tokens": 1033,
+      "defect_type": "bent",
+      "cause": "transfer finger misalignment",
+      "confidence": 0.6,
+      "severity": "critical",
+      "action": "stop_line",
+      "refs": [
+        "§4.2 p.16",
+        "§5.2 p.28"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "bent",
+        "sensors_suggest": "bent",
+        "via": "§5.2 p.28 → §4.2 p.16"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    }
+  ]
+}

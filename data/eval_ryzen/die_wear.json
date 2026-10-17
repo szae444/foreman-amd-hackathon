@@ -1,0 +1,86 @@
+{
+  "model": "google/gemma-4-E2B-it",
+  "totals": {
+    "cases": 3,
+    "defect": 3,
+    "agree": 3,
+    "cites": 3,
+    "action": 3,
+    "errors": 0,
+    "action_flagged": 0
+  },
+  "rows": [
+    {
+      "fault": "die_wear",
+      "image": "018.png",
+      "seconds": 351.2,
+      "tokens": 1373,
+      "defect_type": "scratch",
+      "cause": "die wear and debris in die",
+      "confidence": 0.6,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "scratch",
+        "sensors_suggest": "scratch",
+        "via": "§5.1 p.24 → §4.1 p.14"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "die_wear",
+      "image": "002.png",
+      "seconds": 337.6,
+      "tokens": 1223,
+      "defect_type": "scratch",
+      "cause": "die wear and debris in die",
+      "confidence": 0.6,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "scratch",
+        "sensors_suggest": "scratch",
+        "via": "§5.1 p.24 → §4.1 p.14"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "die_wear",
+      "image": "010.png",
+      "seconds": 115.8,
+      "tokens": 1030,
+      "defect_type": "scratch",
+      "cause": "worn or chipped hex-form punch (station 3), metal debris trapped in the die cavity, or insufficient lubricant film.",
+      "confidence": 0.85,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "scratch",
+        "sensors_suggest": "scratch",
+        "via": "§5.1 p.24 → §4.1 p.14"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    }
+  ]
+}

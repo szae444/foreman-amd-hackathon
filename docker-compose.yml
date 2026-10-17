@@ -1,0 +1,45 @@
+# One AMD Instinct MI300X runs both workloads:
+#   vllm    — Gemma 4 31B (vision) behind an OpenAI-compatible API, bound to localhost only
+#   foreman — PatchCore detector (PyTorch/ROCm) + agent + UI on :8080
+services:
+  vllm:
+    image: vllm/vllm-openai-rocm:latest
+    network_mode: host
+    ipc: host
+    devices: ["/dev/kfd", "/dev/dri"]
+    group_add: ["video"]
+    cap_add: ["SYS_PTRACE"]
+    security_opt: ["seccomp=unconfined"]
+    shm_size: 16g
+    environment:
+      - HF_TOKEN=${HF_TOKEN:-}
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      --model ${FOREMAN_LLM_MODEL:-google/gemma-4-31B-it}
+      --host 127.0.0.1 --port 8000
+      --max-model-len 16384
+      --gpu-memory-utilization 0.80
+      --limit-mm-per-prompt.image 4
+      --limit-mm-per-prompt.audio 0
+    restart: unless-stopped
+
+  foreman:
+    build: .
+    network_mode: host
+    ipc: host
+    devices: ["/dev/kfd", "/dev/dri"]
+    group_add: ["video"]
+    env_file: [.env]
+    environment:
+      - FOREMAN_LLM_BASE_URL=http://127.0.0.1:8000/v1
+      - FOREMAN_DB_PATH=/app/data/db/foreman.db
+    volumes:
+      - ./data/models:/app/data/models
+      - ./data/mvtec:/app/data/mvtec
+      - foreman-db:/app/data/db
+    depends_on: [vllm]
+    restart: unless-stopped
+
+volumes:
+  foreman-db:

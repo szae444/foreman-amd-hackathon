@@ -1,0 +1,98 @@
+{
+  "model": "google/gemma-4-E2B-it",
+  "totals": {
+    "cases": 3,
+    "defect": 3,
+    "agree": 3,
+    "cites": 3,
+    "action": 0,
+    "errors": 0,
+    "action_flagged": 3
+  },
+  "rows": [
+    {
+      "fault": "feeder_orientation",
+      "image": "001.png",
+      "seconds": 233.9,
+      "tokens": 934,
+      "defect_type": "flip",
+      "cause": "orientation feeder fault",
+      "confidence": 0.85,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.4 p.20",
+        "§5.4 p.36"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "flip",
+        "sensors_suggest": "flip",
+        "via": "§5.4 p.36 → §4.4 p.20"
+      },
+      "action_check": {
+        "ok": false,
+        "ref": "§5.4 p.36",
+        "quote": "The press itself does not need to stop: switch OF-1 to bypass and divert to manual sort while adjusting."
+      },
+      "sensor_evidence": true
+    },
+    {
+      "fault": "feeder_orientation",
+      "image": "008.png",
+      "seconds": 108.2,
+      "tokens": 998,
+      "defect_type": "flip",
+      "cause": "orientation feeder fault",
+      "confidence": 0.8,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.4 p.20",
+        "§5.4 p.36"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "flip",
+        "sensors_suggest": "flip",
+        "via": "§5.4 p.36 → §4.4 p.20"
+      },
+      "action_check": {
+        "ok": false,
+        "ref": "§5.4 p.36",
+        "quote": "The press itself does not need to stop: switch OF-1 to bypass and divert to manual sort while adjusting."
+      },
+      "sensor_evidence": true
+    },
+    {
+      "fault": "feeder_orientation",
+      "image": "004.png",
+      "seconds": 94.3,
+      "tokens": 837,
+      "defect_type": "flip",
+      "cause": "orientation feeder fault",
+      "confidence": 0.85,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.4 p.20",
+        "§5.4 p.36"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "flip",
+        "sensors_suggest": "flip",
+        "via": "§5.4 p.36 → §4.4 p.20"
+      },
+      "action_check": {
+        "ok": false,
+        "ref": "§5.4 p.36",
+        "quote": "The press itself does not need to stop: switch OF-1 to bypass and divert to manual sort while adjusting."
+      },
+      "sensor_evidence": true
+    }
+  ]
+}

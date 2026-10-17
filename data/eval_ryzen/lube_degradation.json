@@ -1,0 +1,87 @@
+{
+  "model": "google/gemma-4-E2B-it",
+  "totals": {
+    "cases": 3,
+    "defect": 3,
+    "agree": 3,
+    "cites": 3,
+    "action": 3,
+    "errors": 0,
+    "action_flagged": 0
+  },
+  "rows": [
+    {
+      "fault": "lube_degradation",
+      "image": "014.png",
+      "seconds": 227.8,
+      "tokens": 1267,
+      "defect_type": "color",
+      "cause": "lubrication system fault",
+      "confidence": 0.6,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.3 p.18",
+        "§5.3 p.32"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "color",
+        "sensors_suggest": "color",
+        "via": "§5.3 p.32 → §4.3 p.18"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "lube_degradation",
+      "image": "007.png",
+      "seconds": 114.4,
+      "tokens": 997,
+      "defect_type": "color",
+      "cause": "lubrication system fault",
+      "confidence": 0.7,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.3 p.18",
+        "§5.3 p.32",
+        "§1 p.3"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "color",
+        "sensors_suggest": "color",
+        "via": "§5.3 p.32 → §4.3 p.18"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "lube_degradation",
+      "image": "018.png",
+      "seconds": 217.2,
+      "tokens": 1147,
+      "defect_type": "color",
+      "cause": "lubrication system fault",
+      "confidence": 0.7,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.3 p.18",
+        "§5.3 p.32"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "color",
+        "sensors_suggest": "color",
+        "via": "§5.3 p.32 → §4.3 p.18"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    }
+  ]
+}

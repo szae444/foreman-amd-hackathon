@@ -1,0 +1,20 @@
+{
+  "category": "metal_nut",
+  "device": "cpu",
+  "train_images": 198,
+  "val_images": 22,
+  "coreset_ratio": 0.02,
+  "memory_bank": 3104,
+  "fit_seconds": 87.3,
+  "image_auroc": 0.9956,
+  "ms_per_image": 183.7,
+  "accuracy_at_threshold": {
+    "bent": 0.96,
+    "color": 0.955,
+    "flip": 1.0,
+    "good": 1.0,
+    "scratch": 0.783
+  },
+  "threshold": 0.577995777130127,
+  "trained_at": "2026-10-15 20:00:44"
+}

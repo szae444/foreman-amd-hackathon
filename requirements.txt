@@ -1,0 +1,15 @@
+# PyTorch is NOT listed: on AMD it comes from the rocm/pytorch base image;
+# locally install it first (see README).
+fastapi>=0.115
+uvicorn[standard]>=0.30
+openai>=1.40
+httpx>=0.27
+numpy>=1.26
+pillow>=10.0
+scikit-learn>=1.4
+rank-bm25>=0.2.2
+huggingface_hub>=0.24
+python-dotenv>=1.0
+python-multipart>=0.0.9
+pytest>=8.0
+psutil>=5.9

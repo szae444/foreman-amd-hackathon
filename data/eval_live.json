@@ -1,0 +1,334 @@
+{
+  "model": "google/gemma-4-E2B-it",
+  "totals": {
+    "cases": 12,
+    "defect": 12,
+    "agree": 12,
+    "cites": 12,
+    "action": 9,
+    "errors": 0,
+    "action_flagged": 3
+  },
+  "rows": [
+    {
+      "fault": "die_wear",
+      "image": "018.png",
+      "seconds": 17.0,
+      "tokens": 1059,
+      "defect_type": "scratch",
+      "cause": "die wear and debris in die",
+      "confidence": 0.6,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "scratch",
+        "sensors_suggest": "scratch",
+        "via": "§5.1 p.24 → §4.1 p.14"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "die_wear",
+      "image": "002.png",
+      "seconds": 20.4,
+      "tokens": 1359,
+      "defect_type": "scratch",
+      "cause": "die wear and debris in die",
+      "confidence": 0.85,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "scratch",
+        "sensors_suggest": "scratch",
+        "via": "§5.1 p.24 → §4.1 p.14"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "die_wear",
+      "image": "010.png",
+      "seconds": 19.8,
+      "tokens": 1303,
+      "defect_type": "scratch",
+      "cause": "die wear and debris in die",
+      "confidence": 0.6,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "scratch",
+        "sensors_suggest": "scratch",
+        "via": "§5.1 p.24 → §4.1 p.14"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "transfer_misalign",
+      "image": "010.png",
+      "seconds": 20.0,
+      "tokens": 1310,
+      "defect_type": "bent",
+      "cause": "transfer finger misalignment",
+      "confidence": 0.6,
+      "severity": "critical",
+      "action": "stop_line",
+      "refs": [
+        "§4.2 p.16",
+        "§5.2 p.28"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "bent",
+        "sensors_suggest": "bent",
+        "via": "§5.2 p.28 → §4.2 p.16"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "transfer_misalign",
+      "image": "004.png",
+      "seconds": 18.1,
+      "tokens": 1182,
+      "defect_type": "bent",
+      "cause": "transfer finger misalignment",
+      "confidence": 0.65,
+      "severity": "critical",
+      "action": "stop_line",
+      "refs": [
+        "§4.2 p.16",
+        "§5.2 p.28"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "bent",
+        "sensors_suggest": "bent",
+        "via": "§5.2 p.28 → §4.2 p.16"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "transfer_misalign",
+      "image": "014.png",
+      "seconds": 16.9,
+      "tokens": 1088,
+      "defect_type": "bent",
+      "cause": "transfer finger misalignment",
+      "confidence": 0.7,
+      "severity": "critical",
+      "action": "stop_line",
+      "refs": [
+        "§4.2 p.16",
+        "§5.2 p.28"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "bent",
+        "sensors_suggest": "bent",
+        "via": "§5.2 p.28 → §4.2 p.16"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "lube_degradation",
+      "image": "014.png",
+      "seconds": 18.2,
+      "tokens": 1203,
+      "defect_type": "color",
+      "cause": "lubrication system fault",
+      "confidence": 0.7,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.3 p.18",
+        "§5.3 p.32"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "color",
+        "sensors_suggest": "color",
+        "via": "§5.3 p.32 → §4.3 p.18"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "lube_degradation",
+      "image": "007.png",
+      "seconds": 18.5,
+      "tokens": 1217,
+      "defect_type": "color",
+      "cause": "lubrication system fault",
+      "confidence": 0.7,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.3 p.18",
+        "§5.3 p.32"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "color",
+        "sensors_suggest": "color",
+        "via": "§5.3 p.32 → §4.3 p.18"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "lube_degradation",
+      "image": "018.png",
+      "seconds": 17.9,
+      "tokens": 1154,
+      "defect_type": "color",
+      "cause": "lubrication system fault",
+      "confidence": 0.7,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.3 p.18",
+        "§5.3 p.32"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "color",
+        "sensors_suggest": "color",
+        "via": "§5.3 p.32 → §4.3 p.18"
+      },
+      "action_check": null,
+      "sensor_evidence": true
+    },
+    {
+      "fault": "feeder_orientation",
+      "image": "001.png",
+      "seconds": 14.2,
+      "tokens": 873,
+      "defect_type": "flip",
+      "cause": "orientation feeder fault",
+      "confidence": 0.7,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.4 p.20",
+        "§5.4 p.36"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "flip",
+        "sensors_suggest": "flip",
+        "via": "§5.4 p.36 → §4.4 p.20"
+      },
+      "action_check": {
+        "ok": false,
+        "ref": "§5.4 p.36",
+        "quote": "The press itself does not need to stop: switch OF-1 to bypass and divert to manual sort while adjusting."
+      },
+      "sensor_evidence": true
+    },
+    {
+      "fault": "feeder_orientation",
+      "image": "008.png",
+      "seconds": 15.4,
+      "tokens": 939,
+      "defect_type": "flip",
+      "cause": "orientation feeder fault",
+      "confidence": 0.8,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.4 p.20",
+        "§5.4 p.36"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "flip",
+        "sensors_suggest": "flip",
+        "via": "§5.4 p.36 → §4.4 p.20"
+      },
+      "action_check": {
+        "ok": false,
+        "ref": "§5.4 p.36",
+        "quote": "The press itself does not need to stop: switch OF-1 to bypass and divert to manual sort while adjusting."
+      },
+      "sensor_evidence": true
+    },
+    {
+      "fault": "feeder_orientation",
+      "image": "004.png",
+      "seconds": 17.4,
+      "tokens": 1119,
+      "defect_type": "flip",
+      "cause": "orientation feeder fault",
+      "confidence": 0.85,
+      "severity": "major",
+      "action": "stop_line",
+      "refs": [
+        "§4.4 p.20",
+        "§5.4 p.36",
+        "§6.4 p.54"
+      ],
+      "unverified": [],
+      "consistency": {
+        "agrees": true,
+        "model_says": "flip",
+        "sensors_suggest": "flip",
+        "via": "§5.4 p.36 → §4.4 p.20"
+      },
+      "action_check": {
+        "ok": false,
+        "ref": "§5.4 p.36",
+        "quote": "The press itself does not need to stop: switch OF-1 to bypass and divert to manual sort while adjusting."
+      },
+      "sensor_evidence": true
+    },
+    {
+      "fault": null,
+      "image": "018.png",
+      "seconds": 14.0,
+      "tokens": 914,
+      "defect_type": "scratch",
+      "cause": "die wear or debris in die",
+      "confidence": 0.6,
+      "severity": "minor",
+      "action": "slow_and_inspect",
+      "refs": [
+        "§4.1 p.14",
+        "§5.1 p.24"
+      ],
+      "unverified": [],
+      "consistency": null,
+      "action_check": null,
+      "sensor_evidence": false
+    }
+  ]
+}
