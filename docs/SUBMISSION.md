@@ -25,6 +25,18 @@ Measured on the Ryzen: 0.996 image AUROC on MVTec AD metal_nut, 0% false alarms,
 
 Honest scope: the camera images are real (MVTec AD); the sensors are simulated and the machine manual is fictional.
 
+## Additional info (1488 chars)
+How to try the demo (2 minutes): open the demo URL, press START LINE, then inject "Lubricant degradation". Watch the sensors raise an early warning before the camera flags a part, then read Gemma 4's work order and press APPROVE WORK ORDER. The demo page is the real Foreman UI replaying a run recorded live on our AMD Ryzen laptop. Every image, sensor reading and diagnosis is real output from that run. The ~5-minute Gemma wait is fast-forwarded, and the screen shows the real time. We can run the fully live app on the Ryzen during a call on request.
+
+Hardware and models: AMD Ryzen 7 7435HS (8 cores / 16 threads), CPU only. The laptop's NVIDIA GPU is switched off for the run. Gemma 4 E2B-it (Q4_0 GGUF + vision projector) runs on llama.cpp. PatchCore runs on PyTorch CPU with a WideResNet-50 backbone and a 2% coreset. The dashboard reads the processor's live load and the model server's metrics.
+
+What is real and what is simulated: the camera images are real (MVTec AD metal_nut, CC BY-NC-SA 4.0). The press sensors are simulated with physically plausible fault signatures, and the FM-400 machine manual is fictional. The app and README say both.
+
+Reproducible: the repo includes the training script, a scored live-model evaluation (12/12, results in data/eval_ryzen/), 34 automated tests, the scripts that recorded the demo, and a ROCm + vLLM setup for AMD Instinct MI300X (Gemma 4 31B). That setup is built but not yet run, because we had no cloud credits during the build week.
+
+## Demo application URL
+https://szae444.github.io/foreman-amd-hackathon/
+
 ## Technology tags
 AMD Ryzen · ROCm · llama.cpp · vLLM · Gemma 4 · PyTorch · PatchCore · FastAPI · Computer Vision · AI Agents · RAG
 
