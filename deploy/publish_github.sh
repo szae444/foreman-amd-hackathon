@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 [ -d .git ] || git init -q -b main
 git add -A
 echo "Files to publish:"; git diff --cached --stat | tail -1
-git commit -q -m "Foreman: shop-floor inspection agent on AMD Instinct (AMD Developer Hackathon ACT III)" || true
+git commit -q -m "Foreman: shop-floor inspection agent (AMD Developer Hackathon ACT III)" || true
 gh repo create "$NAME" --public --source . --remote origin --push \
-  --description "PatchCore finds the defect, Gemma 4 explains it, the manual says how to fix it. Both models run on one AMD Instinct MI300X."
+  --description "PatchCore finds the defect, Gemma 4 explains it, the manual says how to fix it. Both models run CPU-only on an AMD Ryzen."
 gh repo view "$NAME" --json url --jq .url
